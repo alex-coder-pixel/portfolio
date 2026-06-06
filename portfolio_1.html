@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander Babitskiy — Веб-разработчик</title>
+<meta name="description" content="Портфолио Александра Бабицкого — веб-разработчик из Москвы">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0b0f;--surface:#10121a;--surface2:#181b26;--text:#e8eaf2;--muted:#5a6080;--muted2:#8890b0;--blue:#3d6aff;--blue-glow:rgba(61,106,255,0.12);--blue-line:rgba(61,106,255,0.3);--line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,11,15,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:0 clamp(20px,5vw,48px);height:52px;display:flex;align-items:center;justify-content:space-between}
+.nav-id{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted2);letter-spacing:0.05em;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.nav-id .slash{color:var(--blue)}
+.nav-id .jr-badge{font-size:9px;font-weight:700;letter-spacing:0.12em;color:var(--bg);background:var(--blue);padding:2px 6px;border-radius:3px}
+.nav-links{display:flex;gap:clamp(16px,3vw,28px);list-style:none}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+
+.hero{padding:clamp(48px,8vw,88px) clamp(20px,5vw,48px) clamp(48px,8vw,72px);max-width:900px;margin:0 auto;position:relative}
+.hero::after{content:'';position:absolute;top:0;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(61,106,255,0.07) 0%,transparent 70%);pointer-events:none}
+
+.hero-status{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted2);letter-spacing:0.06em;margin-bottom:28px}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+
+.hero-title{font-size:clamp(38px,8vw,72px);font-weight:300;line-height:1.05;letter-spacing:-0.03em;margin-bottom:8px}
+.hero-title .name{color:var(--text);display:block}
+.hero-title .surname-wrap{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.hero-title .surname{color:var(--blue);font-weight:600}
+.hero-title .jr{font-family:'Space Mono',monospace;font-size:clamp(14px,2.5vw,22px);font-weight:400;color:var(--blue);opacity:0.5;letter-spacing:0.08em;align-self:flex-end;padding-bottom:6px}
+
+.hero-role{font-family:'Space Mono',monospace;font-size:clamp(11px,2vw,13px);color:var(--muted2);margin-top:18px;margin-bottom:32px}
+.hero-role::before{content:'> ';color:var(--blue)}
+
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.chip{font-size:12px;padding:6px 14px;border:1px solid var(--line2);color:var(--muted2);border-radius:100px;letter-spacing:0.03em}
+.chip-blue{border-color:var(--blue-line);color:var(--blue);background:var(--blue-glow)}
+
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--bg);background:var(--blue);padding:10px 22px;border-radius:6px;text-decoration:none;transition:opacity 0.2s}
+.btn-primary:hover{opacity:0.85}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted2);border:1px solid var(--line2);padding:10px 22px;border-radius:6px;text-decoration:none;transition:border-color 0.2s,color 0.2s}
+.btn-ghost:hover{border-color:var(--blue-line);color:var(--text)}
+
+.divider{height:1px;background:var(--line);max-width:900px;margin:0 auto}
+
+.section{padding:clamp(40px,6vw,64px) clamp(20px,5vw,48px);max-width:900px;margin:0 auto}
+.sec-header{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.sec-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:0.1em;flex-shrink:0}
+.sec-title{font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);white-space:nowrap}
+.sec-line{flex:1;height:1px;background:var(--line)}
+
+.project-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(20px,4vw,32px);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;text-decoration:none;color:inherit;transition:border-color 0.3s,background 0.3s}
+.project-card:hover{border-color:var(--blue-line);background:var(--surface2)}
+.project-card:hover .proj-arrow{opacity:1;transform:translate(3px,-3px)}
+.proj-meta{font-family:'Space Mono',monospace;font-size:10px;color:var(--blue);letter-spacing:0.1em;margin-bottom:10px}
+.proj-name{font-size:clamp(20px,4vw,26px);font-weight:600;letter-spacing:-0.02em;margin-bottom:10px}
+.proj-desc{font-size:14px;color:var(--muted2);line-height:1.7;max-width:500px;margin-bottom:16px}
+.proj-tags{display:flex;gap:6px;flex-wrap:wrap}
+.proj-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;color:var(--muted);border:1px solid var(--line2);padding:4px 10px;border-radius:4px}
+.proj-arrow{font-size:20px;color:var(--blue);opacity:0;transition:opacity 0.2s,transform 0.2s;flex-shrink:0}
+.proj-stat-row{display:flex;flex-wrap:wrap;gap:clamp(16px,4vw,32px);margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.proj-stat-val{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--blue)}
+.proj-stat-lab{font-size:11px;color:var(--muted);margin-top:2px}
+
+.skills-bento{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.skill-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(16px,3vw,24px)}
+.skill-card-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+.skill-list{display:flex;flex-wrap:wrap;gap:8px}
+.skill-pill{font-size:13px;color:var(--muted2);background:var(--surface2);padding:6px 14px;border-radius:6px;border:1px solid var(--line)}
+.skill-card.accent{border-color:var(--blue-line);background:linear-gradient(135deg,var(--surface) 0%,rgba(61,106,255,0.05) 100%)}
+.big-num{font-family:'Space Mono',monospace;font-size:clamp(36px,6vw,48px);font-weight:700;color:var(--blue);line-height:1}
+.big-label{font-size:13px;color:var(--muted2);margin-top:6px}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(16px,3vw,24px) clamp(20px,4vw,28px);text-decoration:none;color:inherit;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color 0.2s,background 0.2s}
+.contact-card:hover{border-color:var(--blue-line);background:var(--surface2)}
+.contact-card:hover .c-arrow{opacity:1}
+.contact-type{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--blue);text-transform:uppercase;margin-bottom:5px}
+.contact-val{font-size:clamp(12px,2.5vw,15px);font-weight:500;word-break:break-all}
+.c-arrow{font-size:18px;color:var(--blue);opacity:0;transition:opacity 0.2s;flex-shrink:0}
+
+footer{border-top:1px solid var(--line);padding:20px clamp(20px,5vw,48px);display:flex;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.foot-text{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
+.foot-text span{color:var(--blue)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:600px){
+  .nav-links{gap:14px}
+  .nav-links a{font-size:11px;letter-spacing:0.04em}
+  .skills-bento{grid-template-columns:1fr}
+  .skill-card.accent{grid-column:span 1}
+  .contact-grid{grid-template-columns:1fr}
+  .project-card{grid-template-columns:1fr}
+  .proj-arrow{display:none}
+  .hero::after{display:none}
+}
+@media(max-width:420px){
+  .hero-chips .chip:last-child{display:none}
+  .hero-cta{flex-direction:column}
+  .btn-primary,.btn-ghost{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-id">
+    <span class="slash">//</span> alex_b <span class="jr-badge">JR</span>
+  </span>
+  <ul class="nav-links">
+    <li><a href="#projects">Проекты</a></li>
+    <li><a href="#skills">Навыки</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+</nav>
+
+<div class="hero reveal">
+  <div class="hero-status"><span class="status-dot"></span>Доступен для новых проектов</div>
+  <h1 class="hero-title">
+    <span class="name">Александр</span>
+    <span class="surname-wrap">
+      <span class="surname">Бабицкий</span>
+      <span class="jr">JR.</span>
+    </span>
+  </h1>
+  <p class="hero-role">веб-разработчик · Москва</p>
+  <div class="hero-chips">
+    <span class="chip-blue chip">Веб-разработка</span>
+    <span class="chip">Москва</span>
+    <span class="chip">2026</span>
+  </div>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#contact">Написать →</a>
+    <a class="btn-ghost" href="#projects">Посмотреть проекты</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section reveal" id="projects">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <span class="sec-title">Проекты</span>
+    <div class="sec-line"></div>
+  </div>
+  <a class="project-card" href="https://laserfm.ru" target="_blank">
+    <div>
+      <p class="proj-meta">КОММЕРЧЕСКИЙ · 2025–2026</p>
+      <h2 class="proj-name">Лазер ФМ</h2>
+      <p class="proj-desc">Лендинг для студии лазерной эпиляции в Москве. Прайс, отзывы, онлайн-запись. Реальный бизнес, реальные клиенты.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">HTML</span>
+        <span class="proj-tag">CSS</span>
+        <span class="proj-tag">JavaScript</span>
+        <span class="proj-tag">UI-дизайн</span>
+      </div>
+      <div class="proj-stat-row">
+        <div class="proj-stat">
+          <div class="proj-stat-val">5.0</div>
+          <div class="proj-stat-lab">Рейтинг на Яндекс Картах</div>
+        </div>
+        <div class="proj-stat">
+          <div class="proj-stat-val">31</div>
+          <div class="proj-stat-lab">Отзыв</div>
+        </div>
+        <div class="proj-stat">
+          <div class="proj-stat-val">↗</div>
+          <div class="proj-stat-lab">laserfm.ru</div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-arrow">↗</div>
+  </a>
+</div>
+
+<div class="divider"></div>
+
+<div class="section reveal" id="skills">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <span class="sec-title">Навыки</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="skills-bento">
+    <div class="skill-card">
+      <div class="skill-card-title">Разработка</div>
+      <div class="skill-list">
+        <span class="skill-pill">HTML</span>
+        <span class="skill-pill">CSS</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">Вёрстка</span>
+        <span class="skill-pill">Лендинги</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Дизайн</div>
+      <div class="skill-list">
+        <span class="skill-pill">UI-дизайн</span>
+        <span class="skill-pill">Типографика</span>
+        <span class="skill-pill">Figma</span>
+      </div>
+    </div>
+    <div class="skill-card accent">
+      <div class="big-num">01</div>
+      <div class="big-label">Запущенный коммерческий проект</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Интересы</div>
+      <div class="skill-list">
+        <span class="skill-pill">Веб</span>
+        <span class="skill-pill">Технологии</span>
+        <span class="skill-pill">Дизайн</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section reveal" id="contact">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <span class="sec-title">Контакты</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:babitskiyalexander@gmail.com">
+      <div>
+        <div class="contact-type">Email</div>
+        <div class="contact-val">babitskiyalexander@gmail.com</div>
+      </div>
+      <span class="c-arrow">↗</span>
+    </a>
+    <a class="contact-card" href="https://t.me/whyseed" target="_blank">
+      <div>
+        <div class="contact-type">Telegram</div>
+        <div class="contact-val">@whyseed</div>
+      </div>
+      <span class="c-arrow">↗</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-text">© 2026 <span>Alex JR Babitskiy</span></span>
+  <span class="foot-text">Москва <span>//</span> Россия</span>
+</footer>
+
+<script>
+const els=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})
+},{threshold:0.06});
+els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
